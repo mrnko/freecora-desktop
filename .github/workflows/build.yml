@@ -1,0 +1,59 @@
+name: Build Windows
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build installer
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build:win
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: freecora-crm-windows
+          path: |
+            dist/*.exe
+            dist/*.blockmap
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Attach to release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.exe
+            dist/*.blockmap
+          body: |
+            Збірки Freecora CRM для Windows 10+ (x64).
+
+            - `Freecora-CRM-Setup-*.exe` — інсталятор
+            - `Freecora-CRM-*-portable.exe` — портативна версія
+
+            Застосунок не підписаний сертифікатом, тож при першому запуску Windows SmartScreen покаже попередження: **Детальніше → Виконати в будь-якому разі**.
+
+            Повний перелік змін — у [CHANGELOG.md](https://github.com/mrnko/freecora-desktop/blob/main/CHANGELOG.md).
+          fail_on_unmatched_files: true

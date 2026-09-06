@@ -1,0 +1,30 @@
+name: Пропозиція
+description: Ідея щодо поведінки застосунку для Windows
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Цей застосунок — обгортка навколо вебверсії Freecora CRM. Він відповідає за вікно, меню, сесію та збірку; сам інтерфейс CRM приходить із сайту.
+
+        Пропозиції щодо розділів, полів і логіки CRM — у репозиторій [mrnko/freecora](https://github.com/mrnko/freecora/issues).
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Яку задачу це вирішує
+      description: Опишіть ситуацію, у якій наразі незручно.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Що пропонуєте
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Альтернативи, які ви розглядали

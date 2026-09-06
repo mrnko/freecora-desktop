@@ -1,0 +1,32 @@
+# Залежності
+node_modules/
+
+# Артефакти збірки
+dist/
+out/
+release/
+*.exe
+*.blockmap
+
+# Кеші electron-builder / electron
+.cache/
+.electron/
+.electron-gyp/
+
+# Локальні змінні оточення
+.env
+.env.local
+
+# Логи
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Редактори та ОС
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+desktop.ini

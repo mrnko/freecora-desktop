@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Питання щодо самої CRM
+    url: https://github.com/mrnko/freecora/issues
+    about: Розділи, дані, права доступу та все, що стосується вебзастосунку Freecora CRM.
+  - name: Freecora CRM
+    url: https://freecora.com
+    about: Сайт продукту, демо-простір і документація.
+  - name: Підтримка
+    url: mailto:info@freecora.com
+    about: Питання, на які не хочеться заводити публічний issue.

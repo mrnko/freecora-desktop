@@ -1,0 +1,51 @@
+# Конфігурація збірки Windows-артефактів.
+# Документація: https://www.electron.build/configuration
+
+appId: com.freecora.desktop
+productName: Freecora CRM
+copyright: © 2026 Freecora
+
+directories:
+  output: dist
+  buildResources: build
+
+# У пакунок потрапляє лише код застосунку — без скриптів, документації та збірок.
+files:
+  - src/**/*
+  - package.json
+  - LICENSE
+
+# Прибираємо зайве з розпакованого Electron.
+removePackageScripts: true
+removePackageKeywords: true
+
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: portable
+      arch: [x64]
+  icon: build/icon.ico
+  artifactName: Freecora-CRM-${version}-${arch}.${ext}
+  # Підпис коду не налаштований: сертифіката немає, тож Windows SmartScreen
+  # показуватиме попередження при першому запуску. Див. README.
+  signAndEditExecutable: true
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Freecora CRM
+  runAfterFinish: true
+  deleteAppDataOnUninstall: false
+  installerLanguages:
+    - uk_UA
+    - en_US
+  artifactName: Freecora-CRM-Setup-${version}.${ext}
+  uninstallDisplayName: Freecora CRM ${version}
+
+portable:
+  artifactName: Freecora-CRM-${version}-portable.${ext}

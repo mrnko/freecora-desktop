@@ -1,0 +1,68 @@
+name: Звіт про помилку
+description: Щось працює не так у застосунку для Windows
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Дякуємо за звіт. Якщо проблема стосується самого інтерфейсу CRM (сторінки, дані, розрахунки), а не вікна застосунку — заводьте issue в репозиторії [mrnko/freecora](https://github.com/mrnko/freecora/issues).
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Опис проблеми
+      description: Що сталося і чого ви очікували натомість.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Кроки для відтворення
+      placeholder: |
+        1. Запустити застосунок
+        2. Відкрити розділ «Клієнти»
+        3. ...
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: Версія застосунку
+      description: Меню «Довідка → Про застосунок»
+      placeholder: 1.0.0
+    validations:
+      required: true
+
+  - type: input
+    id: windows-version
+    attributes:
+      label: Версія Windows
+      placeholder: Windows 11 24H2
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install-type
+    attributes:
+      label: Спосіб встановлення
+      options:
+        - Інсталятор (Setup.exe)
+        - Портативна версія
+        - Запуск із вихідників (npm start)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: browser-check
+    attributes:
+      label: Перевірка в браузері
+      description: Меню «Файл → Відкрити у браузері» відкриє ту саму сторінку в браузері.
+      options:
+        - label: У браузері проблема не відтворюється (отже, вона саме в застосунку)
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Знімки екрана, логи, додатковий контекст

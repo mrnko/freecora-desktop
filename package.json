@@ -1,0 +1,40 @@
+{
+    "name": "freecora-desktop",
+    "productName": "Freecora CRM",
+    "version": "1.0.0",
+    "description": "Десктопний застосунок для Windows, що відкриває CRM Freecora у власному вікні.",
+    "keywords": [
+        "freecora",
+        "crm",
+        "desktop",
+        "electron",
+        "windows"
+    ],
+    "homepage": "https://freecora.com",
+    "bugs": {
+        "email": "info@freecora.com"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Freecora",
+        "email": "info@freecora.com",
+        "url": "https://freecora.com"
+    },
+    "type": "module",
+    "main": "src/main.js",
+    "private": true,
+    "engines": {
+        "node": ">=20"
+    },
+    "scripts": {
+        "start": "electron .",
+        "dev": "electron . --dev",
+        "icons": "node scripts/generate-icons.mjs",
+        "build:win": "electron-builder --win",
+        "build:dir": "electron-builder --win --dir"
+    },
+    "devDependencies": {
+        "electron": "^44.2.0",
+        "electron-builder": "^26.15.3"
+    }
+}
